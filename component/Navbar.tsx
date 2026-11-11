@@ -25,7 +25,7 @@ export default function Navbar() {
           href="#contact"
           className="rounded-md bg-amber-400 px-4 py-2 text-sm font-medium text-black transition hover:bg-amber-300"
         >
-          Hire me Fast
+          Hire me
         </a>
       </nav>
     </header>
