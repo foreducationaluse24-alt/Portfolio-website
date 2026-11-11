@@ -24,3 +24,52 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+
+/* animation */
+
+/* 1. The whole lanyard + card drops in from above and settles */
+@keyframes id-drop {
+  0%   { transform: translateY(-110%); }
+  55%  { transform: translateY(3%); }
+  75%  { transform: translateY(-1.5%); }
+  100% { transform: translateY(0); }
+}
+
+/* 2. After landing it swings like a pendulum, losing energy each pass */
+@keyframes id-swing {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(10deg); }
+  35%  { transform: rotate(-7deg); }
+  55%  { transform: rotate(4deg); }
+  75%  { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* 3. Then a slow, subtle sway forever */
+@keyframes id-idle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(1.5deg); }
+  75%      { transform: rotate(-1.5deg); }
+}
+
+/* 4. Glossy shine passing over the card */
+@keyframes id-shine {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(350%) skewX(-20deg); }
+}
+
+.id-drop  { animation: id-drop 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.id-swing {
+  transform-origin: top center;
+  animation:
+    id-swing 3s ease-out 0.7s forwards,
+    id-idle 6s ease-in-out 3.7s infinite;
+}
+.id-shine { animation: id-shine 4s ease-in-out 1.5s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .id-drop, .id-swing, .id-shine { animation: none; }
+}
