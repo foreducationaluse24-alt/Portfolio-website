@@ -31,3 +31,17 @@ jobs:
             - name: Verify Pushed Image
               run: docker pull soul2424/myportfolio:latest
 
+            - name: Deploy to EC2 server
+              uses: appleboy/ssh-actions@master
+              with:
+                host: ${{secrets.SSH_Host}}
+                username: ${{secrets.SSH_USERNAME}}
+                key: ${{secrets.SSH_KEY}}
+                script: |
+                    sudo docker pull soul2424/myportfolio:latest
+                    sudo docker stop myportfolio || true
+                    sudo docker rm myportfolio || true
+                    sudo docker run -d --name myPortfolio --restart unless-stopped -p 127.0.0.1:3005:3000 soul2424/myportfolio:latest
+
+
+
