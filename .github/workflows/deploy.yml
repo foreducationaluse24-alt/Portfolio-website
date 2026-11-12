@@ -32,7 +32,7 @@ jobs:
               run: docker pull soul2424/myportfolio:latest
 
             - name: Deploy to EC2 server
-              uses: appleboy/ssh-actions@master
+              uses: appleboy/ssh-action@master
               with:
                 host: ${{secrets.SSH_Host}}
                 username: ${{secrets.SSH_USERNAME}}
@@ -41,7 +41,7 @@ jobs:
                     sudo docker pull soul2424/myportfolio:latest
                     sudo docker stop myportfolio || true
                     sudo docker rm myportfolio || true
-                    sudo docker run -d --name myPortfolio --restart unless-stopped -p 127.0.0.1:3005:3000 soul2424/myportfolio:latest
+                    sudo docker run -d --name myportfolio --restart unless-stopped -p 127.0.0.1:3005:3000 soul2424/myportfolio:latest
 
 
 
