@@ -23,7 +23,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
-        <p className="mb-2 text-sm font-medium text-white">What do you need built?</p>
+        <p className="mb-2 text-sm font-medium text-white">What do you need built? tell me</p>
         <div className="flex flex-wrap gap-2">
           {types.map((t) => (
             <button
